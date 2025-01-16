@@ -7,7 +7,7 @@ const gridSize = 20; // Size of each grid cell
 const canvasSize = 400; // Width and height of the canvas
 let snake = [{ x: 160, y: 160 }]; // Initial snake starting position
 let food = spawnFood(); // Randomly spawn food
-let direction = 'RIGHT'; // Initial movement direction
+let direction = null; // No initial movement direction
 let gameOver = false;
 let score = 0;
 let playerName = prompt("Enter your name for the leaderboard:");
@@ -25,10 +25,10 @@ if (Date.now() - lastResetTime > resetInterval) {
 }
 
 // Event listener for controlling the snake via arrow buttons
-document.getElementById('up').addEventListener('click', () => changeDirection('UP'));
-document.getElementById('down').addEventListener('click', () => changeDirection('DOWN'));
-document.getElementById('left').addEventListener('click', () => changeDirection('LEFT'));
-document.getElementById('right').addEventListener('click', () => changeDirection('RIGHT'));
+document.getElementById('up').addEventListener('click', () => startGame('UP'));
+document.getElementById('down').addEventListener('click', () => startGame('DOWN'));
+document.getElementById('left').addEventListener('click', () => startGame('LEFT'));
+document.getElementById('right').addEventListener('click', () => startGame('RIGHT'));
 
 // Main game loop
 function gameLoop() {
@@ -65,12 +65,12 @@ function updateSnake() {
   }
 }
 
-// Change the direction of the snake
-function changeDirection(newDirection) {
-  if (newDirection === 'UP' && direction !== 'DOWN') direction = 'UP';
-  if (newDirection === 'DOWN' && direction !== 'UP') direction = 'DOWN';
-  if (newDirection === 'LEFT' && direction !== 'RIGHT') direction = 'LEFT';
-  if (newDirection === 'RIGHT' && direction !== 'LEFT') direction = 'RIGHT';
+// Start the game by setting the direction
+function startGame(newDirection) {
+  if (direction === null) { // Only start the game if it's not already moving
+    direction = newDirection; // Set the initial direction
+    gameLoop(); // Start the game loop
+  }
 }
 
 // Draw everything on the canvas
@@ -148,12 +148,9 @@ function displayLeaderboard() {
 function resetGame() {
   snake = [{ x: 160, y: 160 }];
   food = spawnFood();
-  direction = 'RIGHT';
+  direction = null; // Snake is stationary
   gameOver = false;
   score = 0;
   playerName = prompt("Enter your name for the leaderboard:");
-  gameLoop();
+  displayLeaderboard(); // Display leaderboard after game reset
 }
-
-// Start the game
-gameLoop();
