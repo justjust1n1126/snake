@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snake Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Snake Game</h1>
+  <canvas id="gameCanvas" width="400" height="400"></canvas>
+
+  <!-- Direction buttons for mobile -->
+  <div id="controls" class="controls">
+    <button id="up" class="control-btn">↑</button>
+    <div>
+      <button id="left" class="control-btn">←</button>
+      <button id="right" class="control-btn">→</button>
+    </div>
+    <button id="down" class="control-btn">↓</button>
+  </div>
+
+  <!-- Leaderboard Section -->
+  <div id="leaderboard">
+    <h2>Leaderboard</h2>
+    <table id="leaderboardTable">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Leaderboard entries will go here -->
+      </tbody>
+    </table>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
