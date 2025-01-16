@@ -21,27 +21,36 @@ canvas {
 }
 
 .controls {
-  display: grid;
-  grid-template-columns: repeat(3, 50px);
-  grid-template-rows: 50px 50px;
-  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.row {
+  display: flex;
   justify-content: center;
-  margin-top: 10px;
 }
 
 .control-btn {
-  font-size: 18px;
-  width: 50px;
-  height: 50px;
+  font-size: 30px;
+  width: 70px;
+  height: 70px;
   background-color: #4CAF50;
   color: white;
   border: none;
   border-radius: 10px;
+  margin: 10px;
   cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.control-btn:hover {
+  background-color: #45a049;
 }
 
 .control-btn:active {
-  background-color: #45a049;
+  background-color: #388e3c;
 }
 
 /* Leaderboard Styles */
